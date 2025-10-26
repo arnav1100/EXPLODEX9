@@ -6,142 +6,150 @@
   <title>EXPLODE X9</title>
   <style>
     :root{
-      --bg:#0b0b0d;
-      --card:#0f1113;
-      --accent:#ff3b3b;
+      --bg:#0b0b10;
+      --card:#0f1317;
       --muted:#9aa0a6;
-      --glow: 0 10px 30px rgba(255,59,59,0.12);
+      --accent:#ff3b3b;
+      --glass: rgba(255,255,255,0.03);
     }
     *{box-sizing:border-box;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;}
+    html,body{height:100%}
     body{
       margin:0;
-      background:linear-gradient(180deg,#050506 0%, #0b0b0d 100%);
-      color:#e6e6e6;
+      background:linear-gradient(180deg,#06060a 0%, #0b0b10 100%);
+      color:#e9eef2;
       display:flex;
       align-items:center;
       justify-content:center;
       min-height:100vh;
       padding:24px;
     }
-    .container{
+
+    .wrap{
       width:100%;
-      max-width:880px;
-      background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));
-      border-radius:18px;
+      max-width:720px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      border-radius:16px;
       padding:28px;
-      box-shadow:var(--glow);
-      border:1px solid rgba(255,255,255,0.03);
+      border:1px solid var(--glass);
+      box-shadow: 0 12px 40px rgba(2,6,12,0.7);
     }
+
     header{
       display:flex;
       align-items:center;
       justify-content:space-between;
-      gap:16px;
+      gap:12px;
       margin-bottom:18px;
     }
     .brand{
-      display:flex;align-items:center;gap:12px;
+      display:flex;
+      align-items:center;
+      gap:14px;
     }
     .logo{
-      width:56px;height:56px;border-radius:12px;
-      background:linear-gradient(135deg,#1b1b1b,#111111);
+      width:64px;height:64px;border-radius:12px;
+      background:linear-gradient(135deg,#17181a,#0f1113);
       display:flex;align-items:center;justify-content:center;
-      font-weight:800;color:var(--accent);font-size:20px;
-      box-shadow:0 6px 18px rgba(0,0,0,0.6), 0 0 12px rgba(255,59,59,0.06) inset;
-      border:1px solid rgba(255,59,59,0.06);
+      font-weight:900;color:var(--accent);font-size:22px;
+      border:1px solid rgba(255,59,59,0.07);
+      box-shadow:0 8px 28px rgba(0,0,0,0.6), 0 0 12px rgba(255,59,59,0.04) inset;
     }
-    h1{font-size:20px;margin:0}
-    p.lead{margin:0;color:var(--muted);font-size:13px}
-    .quote{
-      margin-top:10px;
-      padding:14px;
-      background:linear-gradient(90deg, rgba(255,59,59,0.04), rgba(255,255,255,0.01));
-      border-radius:10px;
-      color:#ffdcdc;
-      font-weight:600;
-      text-shadow:0 2px 8px rgba(0,0,0,0.6);
+    h1{font-size:28px;margin:0;letter-spacing:1px}
+    .madeby{font-size:13px;color:var(--muted);font-weight:700}
+
+    /* Center result area */
+    .center{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      flex-direction:column;
+      padding:34px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.006), rgba(255,255,255,0.004));
+      border-radius:12px;
+      border:1px solid rgba(255,255,255,0.02);
+      margin-bottom:18px;
     }
 
-    .play-area{
+    .result{
       display:flex;
-      gap:24px;
-      margin-top:20px;
       align-items:center;
-      justify-content:space-between;
-      flex-wrap:wrap;
+      justify-content:center;
+      flex-direction:column;
+      gap:12px;
     }
-    .display{
-      flex:1 1 320px;
-      background:linear-gradient(180deg,#070708,#0d0d0f);
-      border-radius:12px;
-      padding:28px;
-      text-align:center;
-      border:1px solid rgba(255,255,255,0.02);
-    }
+
     .num{
-      font-size:120px;
-      font-weight:800;
-      letter-spacing:6px;
-      margin:0;
+      font-size:140px;
+      font-weight:900;
       line-height:1;
-      text-shadow: 0 12px 30px rgba(0,0,0,0.7);
+      margin:0;
+      padding:6px 20px;
+      border-radius:14px;
+      min-width:220px;
+      text-align:center;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), rgba(255,255,255,0.005));
+      box-shadow: 0 22px 60px rgba(2,6,12,0.7);
+      letter-spacing:8px;
     }
-    .label{
-      margin-top:8px;
-      font-size:22px;
-      font-weight:700;
+
+    .size{
+      font-weight:800;
+      font-size:20px;
       padding:8px 18px;
-      display:inline-block;
       border-radius:999px;
-      box-shadow:0 6px 20px rgba(0,0,0,0.6);
+      background:rgba(255,255,255,0.01);
+      color:var(--muted);
+      border:1px solid rgba(255,255,255,0.02);
+      min-width:120px;
+      text-align:center;
     }
-    .small{background:rgba(10,10,10,0.6); color:#8fe6a9; border:1px solid rgba(143,230,169,0.08)}
-    .big{background:rgba(10,10,10,0.6); color:#ffb58f; border:1px solid rgba(255,181,143,0.08)}
 
     .controls{
       display:flex;
-      flex-direction:column;
       gap:12px;
-      width:260px;
-      min-width:200px;
+      margin-top:18px;
+      align-items:center;
     }
+
     .btn{
-      background:linear-gradient(180deg,var(--accent),#b52828);
-      border:none;
-      color:white;
-      padding:14px 18px;
+      appearance:none;
+      border:0;
+      cursor:pointer;
+      padding:12px 18px;
       border-radius:12px;
       font-weight:800;
-      font-size:16px;
-      cursor:pointer;
-      box-shadow:0 10px 30px rgba(255,59,59,0.12);
+      font-size:15px;
+      letter-spacing:0.6px;
+      box-shadow:0 10px 30px rgba(0,0,0,0.6);
     }
-    .btn.secondary{
+    .btn.primary{
+      background:linear-gradient(180deg,var(--accent),#b52828);
+      color:white;
+    }
+    .btn.ghost{
       background:transparent;
-      border:1px solid rgba(255,255,255,0.06);
       color:var(--muted);
+      border:1px solid rgba(255,255,255,0.03);
       font-weight:700;
-      box-shadow:none;
     }
     .btn:disabled{opacity:0.45; cursor:not-allowed}
-    .meta{
-      margin-top:14px;
-      font-size:13px;
-      color:var(--muted);
+
+    .links{
       display:flex;
-      gap:8px;
-      align-items:center;
-      justify-content:space-between;
+      gap:10px;
+      margin-top:12px;
+      justify-content:center;
     }
-    .links{display:flex;gap:10px;flex-direction:column}
     .links a{
-      color:#ffd7d7;
       text-decoration:none;
       font-weight:700;
+      font-size:13px;
+      color:#ffd7d7;
       background:rgba(255,255,255,0.02);
-      padding:8px 12px;border-radius:8px;font-size:14px;
-      border:1px solid rgba(255,255,255,0.02);
+      padding:8px 12px;border-radius:8px;border:1px solid rgba(255,255,255,0.02)
     }
+
     footer{
       margin-top:18px;
       display:flex;
@@ -151,59 +159,47 @@
       font-size:13px;
     }
 
-    /* Small responsive tweaks */
-    @media (max-width:720px){
-      .play-area{flex-direction:column-reverse}
-      .controls{width:100%}
-      .display{width:100%}
-      .num{font-size:86px}
+    @media (max-width:680px){
+      .num{font-size:96px; min-width:160px}
+      header{flex-direction:column;align-items:flex-start;gap:10px}
+      .controls{flex-wrap:wrap}
     }
   </style>
 </head>
 <body>
-  <div class="container" role="main">
+  <div class="wrap" role="main">
     <header>
       <div class="brand">
         <div class="logo">X9</div>
         <div>
           <h1>EXPLODE X9</h1>
-          <p class="lead">Pure random number drops • No sequence • Instant result</p>
         </div>
       </div>
       <div style="text-align:right">
-        <div style="font-weight:800;color:var(--muted);">Made for Arnav</div>
-        <div style="font-size:12px;color:var(--muted);margin-top:6px">Telegram: @arnav_1100</div>
+        <div class="madeby">Made By Arnav</div>
       </div>
     </header>
 
-    <div class="quote">"Dominate the moment — bet bold, think sharp, explode the limits."</div>
-
-    <div class="play-area">
-      <div class="display" aria-live="polite">
-        <p style="margin:0;color:var(--muted)">Current Drop</p>
+    <main class="center" aria-live="polite">
+      <div class="result" role="status">
         <p id="number" class="num">—</p>
-        <div id="sizeLabel" class="label" aria-hidden="true" style="margin-top:12px">—</div>
-      </div>
+        <div id="sizeLabel" class="size">—</div>
 
-      <div class="controls" role="region" aria-label="controls">
-        <button id="startBtn" class="btn" type="button">Start</button>
-        <button id="nextBtn" class="btn secondary" type="button" disabled>Next</button>
-        <div class="meta">
-          <div style="display:flex;flex-direction:column">
-            <div style="font-weight:700">EXPLODE X9</div>
-            <div style="font-size:12px;color:var(--muted)">Random 0–9 generator</div>
-          </div>
-          <div class="links">
-            <a href="https://t.me/arnav_1100" target="_blank" rel="noopener noreferrer">My Profile</a>
-            <a href="https://t.me/+fKHabYVx_shkMDk1" target="_blank" rel="noopener noreferrer">My Channel</a>
-          </div>
+        <div class="controls" role="region" aria-label="controls">
+          <button id="startBtn" class="btn primary" type="button">Start</button>
+          <button id="nextBtn" class="btn ghost" type="button" disabled>Next</button>
+        </div>
+
+        <div class="links" aria-hidden="false">
+          <a href="https://t.me/arnav_1100" target="_blank" rel="noopener noreferrer">My Profile</a>
+          <a href="https://t.me/+fKHabYVx_shkMDk1" target="_blank" rel="noopener noreferrer">My Channel</a>
         </div>
       </div>
-    </div>
+    </main>
 
     <footer>
-      <div>Made with ⚔️ • EXPLODE X9</div>
-      <div>Version 1.0</div>
+      <div style="opacity:0.9">EXPLODE X9 • v1.1</div>
+      <div style="color:var(--muted)">© Arnav</div>
     </footer>
   </div>
 
@@ -215,31 +211,25 @@
       const sizeLabel = document.getElementById('sizeLabel');
 
       function randomDrop(){
-        // Random integer 0..9 inclusive
         return Math.floor(Math.random() * 10);
       }
 
       function render(n){
         numberEl.textContent = n;
-        // small for 0-4, big for 5-9
         if (n >= 0 && n <= 4) {
           sizeLabel.textContent = 'SMALL';
-          sizeLabel.classList.remove('big');
-          sizeLabel.classList.add('small');
-          sizeLabel.setAttribute('aria-label','SMALL');
+          sizeLabel.style.color = '#8fe6a9';
+          sizeLabel.style.borderColor = 'rgba(143,230,169,0.08)';
         } else {
           sizeLabel.textContent = 'BIG';
-          sizeLabel.classList.remove('small');
-          sizeLabel.classList.add('big');
-          sizeLabel.setAttribute('aria-label','BIG');
+          sizeLabel.style.color = '#ffb58f';
+          sizeLabel.style.borderColor = 'rgba(255,181,143,0.08)';
         }
-
-        // little visual pulse
+        // subtle pop
         numberEl.animate([
-          { transform: 'scale(1)', opacity: 0.2 },
-          { transform: 'scale(1.06)', opacity: 1 },
-          { transform: 'scale(1)', opacity: 1 }
-        ], { duration: 420, easing: 'cubic-bezier(.2,.9,.2,1)'});
+          { transform: 'translateY(8px)', opacity: 0 },
+          { transform: 'translateY(0)', opacity: 1 }
+        ], { duration: 360, easing: 'cubic-bezier(.2,.9,.2,1)'});
       }
 
       startBtn.addEventListener('click', function(){
@@ -254,16 +244,16 @@
         render(n);
       });
 
-      // allow restart via double-click on title (optional)
-      document.querySelector('h1').addEventListener('dblclick', function(){
+      // allow quick reset by clicking footer copyright
+      document.querySelector('footer div:nth-child(2)').addEventListener('click', function(){
         numberEl.textContent = '—';
         sizeLabel.textContent = '—';
-        sizeLabel.classList.remove('small','big');
+        sizeLabel.style.color = '';
         startBtn.disabled = false;
         nextBtn.disabled = true;
       });
 
-      // accessibility: allow keyboard Start/Next with Enter when focused
+      // keyboard accessibility: Enter triggers focused button
       [startBtn, nextBtn].forEach(btn=>{
         btn.addEventListener('keyup', (e)=>{
           if(e.key === 'Enter') btn.click();
